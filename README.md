@@ -22,3 +22,61 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## usersテーブル
+
+| Column     | Type       | Options              |
+| ---------- | ---------- | -------------------- |
+| nickname   | string     | null: false          |
+| email      | string     | null: false, unique  |
+| encryped   | string     | null: false          |
+| name-last  | string     | null: false          |
+| name-first | string     | null: false          |
+| kana-last  | string     | null: false          |
+| kana-first | string     | null: false          |
+| birthday   | string     | null: false          |
+
+- has_many :items
+- has_many :orders
+
+
+## itemsテーブル
+
+| Column     | Type       | Options                      |
+| ---------- | ---------- | ---------------------------- |
+| image      | string     | null: false                  |
+| title      | string     | null: false                  |
+| detail     | text       | null: false                  |
+| category   | string     | null: false                  |
+| condition  | string     | null: false                  |
+| load       | string     | null: false                  |
+| area       | string     | null: false                  |
+| day        | string     | null: false                  |
+| price      | string     | null: false                  |
+| users      | references | null: false,foreign_key: true|
+| oeders     | references | null: false,foreign_key: true|
+
+
+- belongs_to :users
+- belongs_to :orders
+
+
+## ordersテーブル
+
+| Column        | Type       | Options                      |
+| ------------- | ---------- | ---------------------------- |
+| card-number   | string     | null: false, unique          |
+| effective-mon | string     | null: false                  |
+| effective-year| string     | null: false                  |
+| code          | string     | null: false                  |
+| post-number   | string     | null: false                  |
+| prefectures   | string     | null: false                  |
+| city          | string     | null: false                  |
+| addresses     | string     | null: false                  |
+| bilding       | string     |                              |
+| phone         | string     | null: false                  |
+| users         | references | null: false,foreign_key: true|
+| items         | references | null: false,foreign_key: true|
+
+
+- belongs_to :users
+- belongs_to :items
