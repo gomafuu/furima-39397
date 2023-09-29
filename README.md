@@ -24,16 +24,16 @@ Things you may want to cover:
 * ...
 ## usersテーブル
 
-| Column     | Type       | Options              |
-| ---------- | ---------- | -------------------- |
-| nickname   | string     | null: false          |
-| email      | string     | null: false, unique  |
-| encryped   | string     | null: false          |
-| name_last  | string     | null: false          |
-| name_first | string     | null: false          |
-| kana_last  | string     | null: false          |
-| kana_first | string     | null: false          |
-| birthday   | string     | null: false          |
+| Column               | Type       | Options                    |
+| -------------------- | ---------- | -------------------------- |
+| nickname             | string     | null: false                |
+| email                | string     | null: false, unique: true  |
+| encrypted_password   | string     | null: false                |
+| name_last            | string     | null: false                |
+| name_first           | string     | null: false                |
+| kana_last            | string     | null: false                |
+| kana_first           | string     | null: false                |
+| birthday             | date       | null: false                |
 
 - has_many :items
 - has_many :orders
@@ -41,42 +41,42 @@ Things you may want to cover:
 
 ## itemsテーブル
 
-| Column     | Type       | Options                      |
-| ---------- | ---------- | ---------------------------- |
-| image      | string     | null: false                  |
-| title      | string     | null: false                  |
-| detail     | text       | null: false                  |
-| category   | string     | null: false                  |
-| condition  | string     | null: false                  |
-| load       | string     | null: false                  |
-| area       | string     | null: false                  |
-| day        | string     | null: false                  |
-| price      | string     | null: false                  |
-| users      | references | null: false,foreign_key: true|
-| oeders     | references | null: false,foreign_key: true|
+| Column       | Type       | Options                      |
+| ------------ | ---------- | ---------------------------- |
+| title        | string     | null: false                  |
+| detail       | text       | null: false                  |
+| category_id  | integer    | null: false                  |
+| condition_id | integer    | null: false                  |
+| load_id      | integer    | null: false                  |
+| area_id      | integer    | null: false                  |
+| day_id       | integer    | null: false                  |
+| price        | integer    | null: false                  |
+| user         | references | null: false,foreign_key: true|
 
 
 - belongs_to :user
-- belongs_to :order
+- has_many :order
 
 
 ## ordersテーブル
 
 | Column        | Type       | Options                      |
 | ------------- | ---------- | ---------------------------- |
-| card_number   | string     | null: false, unique          |
-| effective_mon | string     | null: false                  |
-| effective_year| string     | null: false                  |
-| code          | string     | null: false                  |
 | post_number   | string     | null: false                  |
-| prefectures   | string     | null: false                  |
+| area_id       | integer    | null: false                  |
 | city          | string     | null: false                  |
 | addresses     | string     | null: false                  |
 | bilding       | string     |                              |
 | phone         | string     | null: false                  |
-| users         | references | null: false,foreign_key: true|
-| items         | references | null: false,foreign_key: true|
+| purchases     | string     | null: false,foreign_key: true|
 
 
 - belongs_to :user
 - belongs_to :item
+
+## purchaseテーブル
+
+| Column        | Type       | Options                      |
+| ------------- | ---------- | ---------------------------- |
+| users         | string     | null: false,foreign_key: true|
+| items         | string     | null: false,foreign_key: true|
