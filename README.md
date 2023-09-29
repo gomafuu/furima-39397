@@ -29,10 +29,10 @@ Things you may want to cover:
 | nickname   | string     | null: false          |
 | email      | string     | null: false, unique  |
 | encryped   | string     | null: false          |
-| name-last  | string     | null: false          |
-| name-first | string     | null: false          |
-| kana-last  | string     | null: false          |
-| kana-first | string     | null: false          |
+| name_last  | string     | null: false          |
+| name_first | string     | null: false          |
+| kana_last  | string     | null: false          |
+| kana_first | string     | null: false          |
 | birthday   | string     | null: false          |
 
 - has_many :items
@@ -64,11 +64,11 @@ Things you may want to cover:
 
 | Column        | Type       | Options                      |
 | ------------- | ---------- | ---------------------------- |
-| card-number   | string     | null: false, unique          |
-| effective-mon | string     | null: false                  |
-| effective-year| string     | null: false                  |
+| card_number   | string     | null: false, unique          |
+| effective_mon | string     | null: false                  |
+| effective_year| string     | null: false                  |
 | code          | string     | null: false                  |
-| post-number   | string     | null: false                  |
+| post_number   | string     | null: false                  |
 | prefectures   | string     | null: false                  |
 | city          | string     | null: false                  |
 | addresses     | string     | null: false                  |
