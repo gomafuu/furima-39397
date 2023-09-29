@@ -56,8 +56,8 @@ Things you may want to cover:
 | oeders     | references | null: false,foreign_key: true|
 
 
-- belongs_to :users
-- belongs_to :orders
+- belongs_to :user
+- belongs_to :order
 
 
 ## ordersテーブル
@@ -78,5 +78,5 @@ Things you may want to cover:
 | items         | references | null: false,foreign_key: true|
 
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
