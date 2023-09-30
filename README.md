@@ -41,21 +41,21 @@ Things you may want to cover:
 
 ## itemsテーブル
 
-| Column       | Type       | Options                      |
-| ------------ | ---------- | ---------------------------- |
-| title        | string     | null: false                  |
-| detail       | text       | null: false                  |
-| category_id  | integer    | null: false                  |
-| condition_id | integer    | null: false                  |
-| load_id      | integer    | null: false                  |
-| area_id      | integer    | null: false                  |
-| day_id       | integer    | null: false                  |
-| price        | integer    | null: false                  |
-| user         | references | null: false,foreign_key: true|
-
+| Column          | Type       | Options                      |
+| --------------- | ---------- | ---------------------------- |
+| title           | string     | null: false                  |
+| detail          | text       | null: false                  |
+| category_id     | integer    | null: false                  |
+| condition_id    | integer    | null: false                  |
+| delivery_id     | integer    | null: false                  |
+| area_id         | integer    | null: false                  |
+| deliverydate_id | integer    | null: false                  |
+| price           | integer    | null: false                  |
+| user            | references | null: false,foreign_key: true|
+| order           | references | null: false,foreign_key: true|
 
 - belongs_to :user
-- has_many :order
+- belongs_to :order
 
 
 ## ordersテーブル
@@ -68,15 +68,17 @@ Things you may want to cover:
 | addresses     | string     | null: false                  |
 | bilding       | string     |                              |
 | phone         | string     | null: false                  |
-| purchases     | string     | null: false,foreign_key: true|
+| purchase      | string     | null: false,foreign_key: true|
 
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :purchase
 
-## purchaseテーブル
+## purchasesテーブル
 
 | Column        | Type       | Options                      |
 | ------------- | ---------- | ---------------------------- |
-| users         | string     | null: false,foreign_key: true|
-| items         | string     | null: false,foreign_key: true|
+| user         | string     | null: false,foreign_key: true|
+| item         | string     | null: false,foreign_key: true|
+
+- belongs_to :orders
+
