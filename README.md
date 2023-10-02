@@ -22,3 +22,66 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## usersテーブル
+
+| Column               | Type       | Options                    |
+| -------------------- | ---------- | -------------------------- |
+| nickname             | string     | null: false                |
+| email                | string     | null: false, unique: true  |
+| encrypted_password   | string     | null: false                |
+| name_last            | string     | null: false                |
+| name_first           | string     | null: false                |
+| kana_last            | string     | null: false                |
+| kana_first           | string     | null: false                |
+| birthday             | date       | null: false                |
+
+- has_many :items
+- has_many :purchases
+
+
+## itemsテーブル
+
+| Column          | Type       | Options                      |
+| --------------- | ---------- | ---------------------------- |
+| title           | string     | null: false                  |
+| detail          | text       | null: false                  |
+| category_id     | integer    | null: false                  |
+| condition_id    | integer    | null: false                  |
+| delivery_id     | integer    | null: false                  |
+| area_id         | integer    | null: false                  |
+| deliverydate_id | integer    | null: false                  |
+| price           | integer    | null: false                  |
+| user            | references | null: false,foreign_key: true|
+
+- belongs_to :user
+- has_one :purchase
+
+
+
+## ordersテーブル
+
+| Column        | Type       | Options                      |
+| ------------- | ---------- | ---------------------------- |
+| post_number   | string     | null: false                  |
+| area_id       | integer    | null: false                  |
+| city          | string     | null: false                  |
+| addresses     | string     | null: false                  |
+| bilding       | string     |                              |
+| phone         | string     | null: false                  |
+| purchase      | references | null: false,foreign_key: true|
+
+
+- belongs_to :purchase
+
+
+## purchasesテーブル
+
+| Column        | Type       | Options                      |
+| ------------- | ---------- | ---------------------------- |
+| user          | references | null: false,foreign_key: true|
+| item          | references | null: false,foreign_key: true|
+
+- has_one :order
+- belongs_to :user
+- belongs_to :item
+
