@@ -36,7 +36,7 @@ Things you may want to cover:
 | birthday             | date       | null: false                |
 
 - has_many :items
-- belongs_to :purchase
+- has_many :purchases
 
 
 ## itemsテーブル
@@ -54,7 +54,7 @@ Things you may want to cover:
 | user            | references | null: false,foreign_key: true|
 
 - belongs_to :user
-- belongs_to :purchase
+- has_one :purchase
 
 
 
@@ -81,7 +81,7 @@ Things you may want to cover:
 | user          | references | null: false,foreign_key: true|
 | item          | references | null: false,foreign_key: true|
 
-- belongs_to :order
+- has_one :order
 - belongs_to :user
 - belongs_to :item
 
