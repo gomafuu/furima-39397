@@ -36,7 +36,7 @@ Things you may want to cover:
 | birthday             | date       | null: false                |
 
 - has_many :items
-- has_many :orders
+- has_many :purchases
 
 
 ## itemsテーブル
@@ -52,10 +52,10 @@ Things you may want to cover:
 | deliverydate_id | integer    | null: false                  |
 | price           | integer    | null: false                  |
 | user            | references | null: false,foreign_key: true|
-| order           | references | null: false,foreign_key: true|
 
 - belongs_to :user
-- belongs_to :order
+- has_many :purchases
+
 
 
 ## ordersテーブル
@@ -68,17 +68,20 @@ Things you may want to cover:
 | addresses     | string     | null: false                  |
 | bilding       | string     |                              |
 | phone         | string     | null: false                  |
-| purchase      | string     | null: false,foreign_key: true|
+| purchase      | references | null: false,foreign_key: true|
 
 
-- belongs_to :purchase
+- belongs_to :purchases
+
 
 ## purchasesテーブル
 
 | Column        | Type       | Options                      |
 | ------------- | ---------- | ---------------------------- |
-| user         | string     | null: false,foreign_key: true|
-| item         | string     | null: false,foreign_key: true|
+| user          | references | null: false,foreign_key: true|
+| item          | references | null: false,foreign_key: true|
 
-- belongs_to :orders
+- belongs_to :order
+- belongs_to :user
+- belongs_to :item
 
