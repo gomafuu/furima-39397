@@ -4,11 +4,11 @@ class Order < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :post_number, presence: true
-  validates :area_id    , presence: true
-  validates :city       , presence: true
-  validates :addresses  , presence: true
+  validates :area_id, presence: true
+  validates :city, presence: true
+  validates :addresses, presence: true
   validates :bilding
-  validates :phone      , presence: true
+  validates :phone, presence: true
 
   belongs_to :purchase
 end
