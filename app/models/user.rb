@@ -11,10 +11,10 @@ class User < ApplicationRecord
   validates :kana_first, presence: true
   validates :birthday, presence: true
 
-  validates :password, presence: true, length: { minimum: 6 }
+  validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
 
-  validates_format_of :name_last, :name_first, with: /\A[ぁ-んァ-ヶ一-龥々]+\z/
-  validates_format_of :kana_last, :kana_first, with: /\A[ァ-ヶ]+\z/
+  validates_format_of :name_last, :name_first, with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
+  validates_format_of :kana_last, :kana_first, with: /\A[ァ-ヶー]+\z/
 
   # has_many :items
   # has_many :purchases
