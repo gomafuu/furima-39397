@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  # devise_for :orders
+  # devise_for :purchases
+  # devise_for :items
   devise_for :users
-  root to: 'users#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'items#index'
+  resources :items
 end
