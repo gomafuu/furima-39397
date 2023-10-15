@@ -68,6 +68,16 @@ describe '商品出品' do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
     end
+    it 'priceが半角数値以外では登録できない' do
+      @item.price = /[０-９]/
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price can't be blank"
+    end
+    it 'userが紐づいていない場合は登録できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "User must exist"
+    end
   end
 end
 end

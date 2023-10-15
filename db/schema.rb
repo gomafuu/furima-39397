@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2023_10_15_081429) do
     t.integer "area_id", null: false
     t.integer "deliverydate_id", null: false
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

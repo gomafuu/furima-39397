@@ -11,7 +11,9 @@ class Items < ActiveRecord::Migration[6.0]
       t.integer   :deliverydate_id,null: false
       t.integer   :price,          null: false
 
-      t.timestamps null: false
+      t.integer :user_id
+      
+      t.timestamps 
     end
   end
 end
