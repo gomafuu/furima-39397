@@ -16,11 +16,14 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-
-    # def show
-    # end
-
   end
+
+
+    def show
+      @item = Item.find(params[:id])
+    end
+
+  
 
   private
 
