@@ -12,6 +12,8 @@ class Items < ActiveRecord::Migration[6.0]
       t.integer   :price,          null: false
 
       t.integer :user_id
+
+      t.references :user, null: false, foreign_key: true
       
       t.timestamps 
     end
