@@ -5,9 +5,9 @@ const pay = () => {
   const expiryElement = elements.create('cardExpiry');
   const cvcElement = elements.create('cardCvc');
 
-  numberElement.mount('#card-number');
-  expiryElement.mount('#card-exp-month', '#card-exp-year');
-  cvcElement.mount('#card-cvc');
+  numberElement.mount('#number-form');
+  expiryElement.mount('#expiry-form');
+  cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
 
@@ -17,19 +17,18 @@ const pay = () => {
       if (response.error) {
       } else {
         const token = response.id;
-        console.log(token);
-    //     const renderDom = document.getElementById("charge-form");
-    //     const tokenObj = `<input value=${token} name='token' type="hidden">`;
-    //     renderDom.insertAdjacentHTML("beforeend", tokenObj);
-    //     }
-    //     numberElement.clear();
-    //     expiryElement.clear();
-    //     cvcElement.clear();
-    //     document.getElementById("charge-form").submit();
-      }
+
+        const renderDom = document.getElementById("charge-form");
+        const tokenObj = `<input value=${token} name='token' type="hidden">`;
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        }
+        numberElement.clear();
+        expiryElement.clear();
+        cvcElement.clear();
+        document.getElementById("charge-form").submit();
     });
-  });
-};
+      });
+    };
 
 window.addEventListener("load", pay);
 
