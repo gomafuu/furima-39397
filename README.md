@@ -66,7 +66,7 @@ Things you may want to cover:
 | area_id       | integer    | null: false                  |
 | city          | string     | null: false                  |
 | addresses     | string     | null: false                  |
-| bilding       | string     |                              |
+| building       | string     |                              |
 | phone         | string     | null: false                  |
 | purchase      | references | null: false,foreign_key: true|
 
