@@ -57,7 +57,7 @@ RSpec.describe PurchaseOrder, type: :model do
       it 'tokenが空では登録できない' do
         @purchase_order.token = ''
         @purchase_order.valid?
-        expect(@purchase_order.errors.full_messages).to include "token can't be blank"
+        expect(@purchase_order.errors.full_messages).to include "Token can't be blank"
       end
     end
   end
