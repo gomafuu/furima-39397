@@ -3,13 +3,11 @@ class PurchaseOrder
 
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :post_number, :area_id,:city, 
-                :addresses, :building, :phone, :price, :token
+                :addresses, :building, :phone, :token
 
     with_options presence: true do
     validates :user_id
     validates :item_id
-
-    validates :price        , presence: false
 
     validates :token
 
