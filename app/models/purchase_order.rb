@@ -11,15 +11,15 @@ class PurchaseOrder
 
     validates :price        , presence: false
 
-    validates :token        ,presence: true
+    validates :token
 
-    validates :post_number  , presence: true
+    validates :post_number
     validates_format_of :post_number, with: /\A\d{3}-\d{4}\z/
     validates :area_id      , numericality: {other_than: 1 , message:"can't be blank"}
-    validates :city         , presence: true
-    validates :addresses    , presence: true
+    validates :city 
+    validates :addresses
     validates :building     , presence: false
-    validates :phone        , presence: true
+    validates :phone
     validates_format_of :phone, with: /\A\d{10,11}\z/
     end
   
@@ -33,6 +33,7 @@ class PurchaseOrder
         addresses: addresses, 
         building: building, 
         phone: phone, 
+        purchase_id: purchase_id
       )
     end
 

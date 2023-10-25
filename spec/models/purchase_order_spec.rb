@@ -49,7 +49,17 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Phone can't be blank"
       end
-      it 'phoneが10桁以上11以内で半角でないと登録できない' do
+      it 'phoneが9桁以下だと登録できない' do
+        @purchase_order.phone = '12345678'
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Phone is invalid"
+      end
+      it 'phoneが12桁以上だと登録できない' do
+        @purchase_order.phone = '123456789102'
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Phone is invalid"
+      end
+      it 'phoneが全角数字登録できない' do
         @purchase_order.phone = '０９０１２３４５６７'
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Phone is invalid"
@@ -58,6 +68,16 @@ RSpec.describe PurchaseOrder, type: :model do
         @purchase_order.token = ''
         @purchase_order.valid?
         expect(@purchase_order.errors.full_messages).to include "Token can't be blank"
+      end
+      it 'user_idが空では登録できない' do
+        @purchase_order.user_id = ''
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idが空では登録できない' do
+        @purchase_order.item_id = ''
+        @purchase_order.valid?
+        expect(@purchase_order.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
