@@ -31,7 +31,7 @@ class PurchaseOrder
         addresses: addresses, 
         building: building, 
         phone: phone, 
-        purchase_id: purchase_id
+        purchase: purchase
       )
     end
 
