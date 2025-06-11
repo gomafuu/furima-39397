@@ -1,7 +1,7 @@
+
 const pay = () => {
-  const payjpKey = document.getElementById("payjp-key").dataset.key;
-  const payjp = Payjp(payjpKey);
-  
+  const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
+  // const payjp = ENV["PAYJP_PUBLIC_KEY"]
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -12,28 +12,23 @@ const pay = () => {
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
-  if (!submit) return; 
 
   submit.addEventListener("click", (e) => {
     e.preventDefault();
-
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
-        alert(response.error.message);
       } else {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
-
-        const tokenInput = document.createElement("input");
-        tokenInput.setAttribute("type", "hidden");
-        tokenInput.setAttribute("name", "token");
-        tokenInput.setAttribute("value", token);
-        renderDom.appendChild(tokenInput);
-
-        renderDom.submit();
+        const tokenObj = `<input value=${token} type="hidden" name='token'>`;
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
+      numberElement.clear();
+      expiryElement.clear();
+      cvcElement.clear();
+      document.getElementById("charge-form").submit();
     });
-  });
-};
+      });
+    };
 
 window.addEventListener("load", pay);
