@@ -1,5 +1,6 @@
 const pay = () => {
-  const payjp = Payjp("<%= ENV['PAYJP_PUBLIC_KEY'] %>");
+  const payjpKey = document.getElementById("payjp-key").dataset.key;
+  const payjp = Payjp(payjpKey);
   
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
@@ -11,24 +12,22 @@ const pay = () => {
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
+  if (!submit) return; 
 
   submit.addEventListener("click", (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
-        alert(response.error.message); 
+        alert(response.error.message);
       } else {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
 
-        const existingTokenInput = document.querySelector('input[name="token"]');
-        if (existingTokenInput) existingTokenInput.remove();
-
-        const tokenInput = document.createElement('input');
-        tokenInput.setAttribute('type', 'hidden');
-        tokenInput.setAttribute('name', 'token');
-        tokenInput.setAttribute('value', token);
+        const tokenInput = document.createElement("input");
+        tokenInput.setAttribute("type", "hidden");
+        tokenInput.setAttribute("name", "token");
+        tokenInput.setAttribute("value", token);
         renderDom.appendChild(tokenInput);
 
         renderDom.submit();
