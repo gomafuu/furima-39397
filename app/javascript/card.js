@@ -1,3 +1,4 @@
+
 const pay = () => {
   const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
   // const payjp = ENV["PAYJP_PUBLIC_KEY"]
@@ -31,4 +32,3 @@ const pay = () => {
     };
 
 window.addEventListener("load", pay);
-
