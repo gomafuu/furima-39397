@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/delete_items'
   devise_for :users
 
   root to: 'items#index'
